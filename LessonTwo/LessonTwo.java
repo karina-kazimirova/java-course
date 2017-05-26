@@ -86,8 +86,9 @@ public class LessonTwo {
         String arrayToString = Arrays.toString(array);
         System.out.println("Простой массив " + arrayToString);
 
-        for(int i = 0; i < array.length; i++){
-            for(int j = array.length - 1; j > 0; j--){
+        int arrayMiddle = array.length / 2;
+        for(int i = 0; i < arrayMiddle; i++){
+            for(int j = array.length - 1; j > arrayMiddle-1; j--){
                 int temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
