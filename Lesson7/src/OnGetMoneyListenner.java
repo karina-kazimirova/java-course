@@ -3,5 +3,5 @@
  */
 public interface OnGetMoneyListenner {
 
-    public void onAddMoney();
+    public void onAddMoney(int x);
 }

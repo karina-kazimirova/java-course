@@ -147,13 +147,12 @@ public class Money {
             }
             isEnough = true;
 
-            addlistenner.onAddMoney();
+            addlistenner.onAddMoney(x);
             System.out.println("Выдано банкнот: " + "Номиналом 100руб: " + count100 + " " + "Номиналом 50руб: " + count50 + " " + "Номиналом 20руб: " + count20);
         }
 
         else{
-            failureListenner.onFailure();
-            System.out.println("В банкомате недостаточно средств!");
+            failureListenner.onFailure(money.getSumm());
             isEnough = false;
         }
 

@@ -3,5 +3,5 @@
  */
 public interface OnFailureListenner {
 
-    public void onFailure();
+    public void onFailure(int y);
 }

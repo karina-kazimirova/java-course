@@ -41,12 +41,12 @@ public class Bankomat implements OnLoadListener, OnGetMoneyListenner, OnFailureL
 
 
     @Override
-    public void onAddMoney() {
-        System.out.println("Возьмите деньги...");
+    public void onAddMoney(int x) {
+        System.out.println("Возьмите деньги..." + x + " рублей");
     }
 
     @Override
-    public void onFailure() {
-        System.out.println("Операция не выполнена, попробуйте еще раз.");
+    public void onFailure(int y) {
+        System.out.println("Операция не выполнена, попробуйте еще раз." + "В банкомате: " + y + " рублей.");
     }
 }
