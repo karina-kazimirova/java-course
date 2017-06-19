@@ -41,7 +41,9 @@ public class Main {
 
         }
 
-        System.out.println(allPeople.get(search()));
+
+        People people1 = (allPeople.get(search()));
+        System.out.println(people1.getName() + " " + people1.getOtchestvo() + " " + people1.getSurname());
 
 
         // Сравнение
