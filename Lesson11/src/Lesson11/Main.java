@@ -46,21 +46,7 @@ public class Main {
         System.out.println(people1.getName() + " " + people1.getOtchestvo() + " " + people1.getSurname());
 
 
-        // Сравнение
-        Collections.sort(man);
-
-        Collections.sort(woman, new Comparator<People>() {
-            @Override
-            public int compare(People o1, People o2) {
-
-                if(o1.getName().equals(o2.getName())){
-                    return  0;
-                }
-                return 1;
-
-
-            }
-        });
+       
 
     }
 
