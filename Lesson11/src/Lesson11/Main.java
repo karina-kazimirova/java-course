@@ -20,33 +20,15 @@ public class Main {
         woman.add(new People("woman", "Ирина", "Олеговна", "Петрова"));
         woman.add(new People("woman", "Нина", "Петровна", "Светлова"));
 
-       /* ArrayList<People> all = new ArrayList<>(man);
-        all.addAll(woman);*/
 
 
+        HashMap<String, ArrayList<People>> allPeople = new HashMap<>();
 
-        HashMap<String, People> allPeople = new HashMap<>();
-
-
-
-        for (Iterator<People> iter = man.iterator(); iter.hasNext(); ) {
-
-            allPeople.put("man", iter.next());
-
-    }
-
-        for (Iterator<People> iter = woman.iterator(); iter.hasNext(); ) {
-
-            allPeople.put("woman", iter.next());
-
-        }
+        allPeople.put("man", man);
+        allPeople.put("woman", woman);
 
 
-        People people1 = (allPeople.get(search()));
-        System.out.println(people1.getName() + " " + people1.getOtchestvo() + " " + people1.getSurname());
-
-
-       
+        System.out.println(allPeople.get(search()));
 
     }
 

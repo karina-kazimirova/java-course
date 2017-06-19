@@ -4,6 +4,16 @@ package Lesson11;
  * Created by Sve on 17.06.2017.
  */
 public class People implements Comparable<People>{
+    @Override
+    public String toString() {
+        return "People{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", pol='" + pol + '\'' +
+                ", otchestvo='" + otchestvo + '\'' +
+                '}';
+    }
+
     private String name;
 
     public void setPol(String pol) {
