@@ -27,8 +27,13 @@ public class Main {
         allPeople.put("man", man);
         allPeople.put("woman", woman);
 
+        // Поиск случайного элемента
+        ArrayList<People> searchEl = allPeople.get(search());
+        Random random = new Random();
+        int x = random.nextInt(searchEl.size());
+        System.out.println(searchEl.get(x));
 
-        System.out.println(allPeople.get(search()));
+
 
     }
 

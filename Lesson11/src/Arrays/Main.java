@@ -1,8 +1,5 @@
 package Arrays;
 
-import Lesson11.People;
-import Lesson11.Pol;
-
 import java.util.*;
 
 /**
