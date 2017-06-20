@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <name>Test file</name>
+   <people>
+      <element>
+         <age>12</age>
+         <id>0</id>
+         <isDegree>true</isDegree>
+         <names>Ivan</names>
+         <surname>Ivanov</surname>
+      </element>
+      <element>
+         <age>20</age>
+         <id>1</id>
+         <isDegree>false</isDegree>
+         <names>Sergei</names>
+         <surname>Petrov</surname>
+      </element>
+      <element>
+         <age>42</age>
+         <id>2</id>
+         <isDegree>true</isDegree>
+         <names>Alexei</names>
+         <surname>Sidorov</surname>
+      </element>
+      <element>
+         <age>34</age>
+         <id>3</id>
+         <isDegree>true</isDegree>
+         <names>Michael</names>
+         <surname>Jackson</surname>
+      </element>
+      <element>
+         <age>235</age>
+         <id>4</id>
+         <isDegree>true</isDegree>
+         <names>Alex</names>
+         <surname>Lukushenko</surname>
+      </element>
+      <element>
+         <age>21</age>
+         <id>5</id>
+         <isDegree>true</isDegree>
+         <names>Maksim</names>
+         <surname>Hsdfkj</surname>
+      </element>
+   </people>
+</root>
