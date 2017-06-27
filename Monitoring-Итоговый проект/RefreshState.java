@@ -5,8 +5,15 @@ public class RefreshState implements State {
 
     @Override
     public void writeState(UI ui) {
+        System.out.println("Подождите, идет обновление данных ...");
 
-        System.out.println("Данные были обновлены...");
-        ui.setState(this);
     }
+
+    @Override
+    public void run(UI ui) {
+        ui.downloadFile("http://kiparo.ru/t/rad.json", ui);
+        //ui.downloadFile("http://kiparo.ru/t/rad.xml");
+        ui.changeState(new ReadyState());
+    }
+
 }

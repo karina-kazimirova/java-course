@@ -1,6 +1,12 @@
 package Monitoring;
 
 import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Controller {
 
@@ -22,7 +28,7 @@ public class Controller {
 
 
 
-    // Вызываем метод заполнения объектов из массива
+        // Вызываем метод заполнения объектов из файла
    public static void printSities(String type) throws XMLStreamException {
 
        Parser parser;

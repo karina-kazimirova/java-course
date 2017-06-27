@@ -7,7 +7,11 @@ public class ReadyState implements State{
     @Override
     public void writeState(UI ui) {
         System.out.println("Готов к использованию...");
-        ui.setState(this);
 
+    }
+
+    @Override
+    public void run(UI ui) {
+      // ui.startParse(ui);
     }
 }

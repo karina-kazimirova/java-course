@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
 
         UI ui = new UI();
-        ui.setState(new LoadState());
-
+        ui.changeState(new RefreshState());
         ui.start();
+
 
     }
 

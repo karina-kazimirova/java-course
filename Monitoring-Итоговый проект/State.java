@@ -5,6 +5,7 @@ package Monitoring;
  */
 public interface State {
     public void writeState(UI ui);
+    public void run(UI ui);
 
 
 }

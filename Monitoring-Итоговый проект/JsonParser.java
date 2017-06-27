@@ -27,8 +27,8 @@ public class JsonParser extends Parser{
             monitoring = gson.fromJson(reader, Monitoring.class);
 
         }catch(Exception e){
-            UI ui = new UI();
-            ui.changeState(new FailureState());
+           // UI ui = new UI();
+            //ui.changeState(new FailureState());
             System.out.println("Ошибка чтения файла" + e.toString());
         }
 

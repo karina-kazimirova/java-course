@@ -6,6 +6,7 @@ import jdk.internal.org.xml.sax.SAXException;
 import jdk.internal.org.xml.sax.helpers.DefaultHandler;
 import org.simpleframework.xml.core.Persister;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sun.plugin2.message.Serializer;
@@ -37,76 +38,65 @@ public class XMLParser extends Parser {
     public Monitoring parseFile(String path) throws XMLStreamException {
 
         Monitoring monitoring = null;
-
-        ArrayList<City> city = new ArrayList<>();
-        City city1 = null;
-        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        ArrayList<City> city = null;
         try {
-            XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(new FileInputStream(path));
-            while (xmlEventReader.hasNext()) {
-                XMLEvent xmlEvent = xmlEventReader.nextEvent();
-                if (xmlEvent.isStartElement()) {
-                    StartElement startElement = xmlEvent.asStartElement();
-                    if (startElement.getName().getLocalPart().equals("sities")) {
-                        city1 = new City();
-                        //Get the 'id' attribute from Employee element
-                      Attribute idAttr = startElement.getAttributeByName(new QName("id"));
-                      if (idAttr != null) {
-                           city1.setId(Integer.parseInt(idAttr.getValue()));
-                        }
-                    }
-                    //set the other varibles from xml elements
-                    else if (startElement.getName().getLocalPart().equals("id")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setId(Integer.parseInt(xmlEvent.asCharacters().getData()));
-                    } else if (startElement.getName().getLocalPart().equals("names")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setNames(xmlEvent.asCharacters().getData());
-                    } else if (startElement.getName().getLocalPart().equals("value")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setValue(Integer.parseInt(xmlEvent.asCharacters().getData()));
-                    } else if (startElement.getName().getLocalPart().equals("level")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setLevel(xmlEvent.asCharacters().getData());
-                    } else if (startElement.getName().getLocalPart().equals("minValue")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setMinValue(Integer.parseInt(xmlEvent.asCharacters().getData()));
-                    } else if (startElement.getName().getLocalPart().equals("maxValue")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setMaxValue(Integer.parseInt(xmlEvent.asCharacters().getData()));
-                    } else if (startElement.getName().getLocalPart().equals("DateMinValue")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setDateMinValue(xmlEvent.asCharacters().getData());
-                    } else if (startElement.getName().getLocalPart().equals("DateMaxValue")) {
-                        xmlEvent = xmlEventReader.nextEvent();
-                        city1.setDateMaxValue(xmlEvent.asCharacters().getData());
-                    }
-                }
-                //if Employee end element is reached, add employee object to list
-                if (xmlEvent.isEndElement()) {
-                    EndElement endElement = xmlEvent.asEndElement();
-                    if (endElement.getName().getLocalPart().equals("sities")) {
-                        city.add(city1);
+            dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(path);
+            doc.getDocumentElement().normalize();
+            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+            NodeList nodeList = doc.getElementsByTagName("sities");
 
-
-                    }
-                }
-
+            city = new ArrayList<City>();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                city.add(getCity(nodeList.item(i)));
             }
 
-        } catch (FileNotFoundException | XMLStreamException e) {
+
+            for (City city1 : city) {
+                System.out.println(city1.toString());
+            }
+        } catch (ParserConfigurationException | IOException e1) {
+            e1.printStackTrace();
+        } catch (org.xml.sax.SAXException e) {
             e.printStackTrace();
         }
 
-
-
-
-        ArrayList<City> city2 = new ArrayList<City>(city);
-        System.out.println(city2.toString());
-        monitoring.setSities(city2);
-
-        monitoring.setName("frg");
-        monitoring.setLocation("rgtg");
+        System.out.println(city.toString());
+       // monitoring.getSities(city);
         return monitoring;
     }
+
+
+    private static City getCity(Node node) {
+        //XMLReaderDOM domReader = new XMLReaderDOM();
+        City city1 = new City();
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            Element element = (Element) node;
+            city1.setNames(getTagValue("name", element));
+            city1.setId(Integer.parseInt(getTagValue("id", element)));
+            city1.setValue(Integer.parseInt(getTagValue("value", element)));
+            city1.setLevel(getTagValue("level", element));
+            city1.setMinValue(Integer.parseInt(getTagValue("minValue", element)));
+            city1.setDateMinValue(getTagValue("dateMinValue", element));
+            city1.setMaxValue(Integer.parseInt(getTagValue("maxValue", element)));
+            city1.setDateMaxValue(getTagValue("dateMaxValue", element));
+
+        }
+
+        return city1;
+    }
+
+
+
+
+    private static String getTagValue(String tag, Element element) {
+        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
+        Node node = (Node) nodeList.item(0);
+        return node.getNodeValue();
+    }
+
+
+
 }

@@ -10,11 +10,22 @@ import java.util.List;
 public class Monitoring {
 
     private String name;
+
+    @Override
+    public String toString() {
+        return "Monitoring{" +
+                "name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", dateMonitoring='" + dateMonitoring + '\'' +
+                ", sities=" + sities +
+                '}';
+    }
+
     private String location;
     private String dateMonitoring;
     private ArrayList<City> sities;
 
-      public String getDateMonitoring() {
+    public String getDateMonitoring() {
         return dateMonitoring;
     }
 
@@ -46,15 +57,6 @@ public class Monitoring {
     }
 
 
-    @Override
-    public String toString() {
-        return "Monitoring{" +
-                "name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", dateMonitoring='" + dateMonitoring + '\'' +
-                ", sities=" + sities +
-                '}';
-    }
 
 
 }

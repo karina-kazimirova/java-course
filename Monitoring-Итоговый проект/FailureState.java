@@ -9,7 +9,12 @@ public class FailureState implements State {
     public void writeState(UI ui) {
 
         System.out.println("Произошла ошибка, попробуйте еще раз...");
-        ui.setState(this);
+        //ui.setState(this);
+
+    }
+
+    @Override
+    public void run(UI ui) {
 
     }
 }
