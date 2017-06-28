@@ -74,7 +74,7 @@ public class XMLParser extends Parser {
         City city1 = new City();
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
-            city1.setNames(getTagValue("name", element));
+            city1.setName(getTagValue("name", element));
             city1.setId(Integer.parseInt(getTagValue("id", element)));
             city1.setValue(Integer.parseInt(getTagValue("value", element)));
             city1.setLevel(getTagValue("level", element));

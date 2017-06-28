@@ -10,7 +10,7 @@ import java.util.Date;
 public class City {
 
     private int id;
-    private String names;
+    private String name;
     private int value;
     private String level;
     private int minValue;
@@ -24,8 +24,8 @@ public class City {
         this.id = id;
     }
 
-    public void setNames(String names) {
-        this.names = names;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setValue(int value) {
@@ -56,8 +56,8 @@ public class City {
         return id;
     }
 
-    public String getNames() {
-        return names;
+    public String getName() {
+        return name;
     }
 
     public int getValue() {
@@ -84,6 +84,7 @@ public class City {
         return dateMaxValue;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,7 +96,7 @@ public class City {
         if (value != city.value) return false;
         if (minValue != city.minValue) return false;
         if (maxValue != city.maxValue) return false;
-        if (names != null ? !names.equals(city.names) : city.names != null) return false;
+        if (name != null ? !name.equals(city.name) : city.name != null) return false;
         if (level != null ? !level.equals(city.level) : city.level != null) return false;
         if (dateMinValue != null ? !dateMinValue.equals(city.dateMinValue) : city.dateMinValue != null) return false;
         return dateMaxValue != null ? dateMaxValue.equals(city.dateMaxValue) : city.dateMaxValue == null;
@@ -104,7 +105,7 @@ public class City {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (names != null ? names.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + value;
         result = 31 * result + (level != null ? level.hashCode() : 0);
         result = 31 * result + minValue;
@@ -118,7 +119,7 @@ public class City {
     public String toString() {
         return "City{" +
                 "id=" + id +
-                ", name='" + names + '\'' +
+                ", name='" + name + '\'' +
                 ", value=" + value +
                 ", level='" + level + '\'' +
                 ", minValue=" + minValue +

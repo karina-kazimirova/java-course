@@ -16,22 +16,12 @@ public class Monitoring {
         return "Monitoring{" +
                 "name='" + name + '\'' +
                 ", location='" + location + '\'' +
-                ", dateMonitoring='" + dateMonitoring + '\'' +
                 ", sities=" + sities +
                 '}';
     }
 
     private String location;
-    private String dateMonitoring;
     private ArrayList<City> sities;
-
-    public String getDateMonitoring() {
-        return dateMonitoring;
-    }
-
-    public void setDateMonitoring(String dateMonitoring) {
-        this.dateMonitoring = dateMonitoring;
-    }
 
 
     public void setLocation(String location) {
@@ -41,9 +31,11 @@ public class Monitoring {
     public String getLocation() {
         return location;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -57,6 +49,6 @@ public class Monitoring {
     }
 
 
-
-
 }
+
+

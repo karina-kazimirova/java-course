@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Sve on 26.06.2017.
@@ -31,11 +36,40 @@ public class UI {
     }
 
 
+
+
     public void start() {
         state.writeState(this);
         state.run(this);
 
     }
+
+    public void downloadFile(String link, UI ui) {
+
+        String pathFile;
+        if(findFormat().equals("json")) {
+            pathFile = "C://Users/Sve/IdeaProjects/Lesson13/src/new.json";
+        }else{
+            pathFile = "C://Users/Sve/IdeaProjects/Lesson13/src/new.xml";
+        }
+
+        try {
+            Controller.downloadNew(link, pathFile, ui);
+
+
+        } catch (MyException e) {
+            if (e.getCode() == 100) {
+                System.out.println("Произошла ошибка, данные не были обновлены");
+            }
+            ui.changeState(new FailureState());
+        }
+
+        state.writeState(this);
+        state.run(this);
+
+    }
+
+
 
     public void startParse(UI ui) {
 
@@ -49,74 +83,37 @@ public class UI {
 
         }
         state.writeState(this);
+        state.run(this);
 
     }
 
 
-    public void downloadFile(String link, UI ui) {
+    public String findFormat() {
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Введите название файла:");
+        String link = scanner1.nextLine();
 
-        InputStream inputStream = null; // считывание
-        FileOutputStream outputStream = null;// передача
+        String path = null;
+        Pattern patFormat = Pattern.compile("\\.(\\w+)");
+        Matcher matcher2 = patFormat.matcher(link);
 
-        try {
-            URL url = new URL(link);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();//Подключаемся
-
-            //Получаем код ответа от сайта или серверва
-            int responseCode = httpURLConnection.getResponseCode();
-
-
-            // Проверяем успешное ли подключение, проверка на ошибки
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-
-                inputStream = httpURLConnection.getInputStream(); // Получаем Инпутстрим
-
-                File file = new File("C://Users/Sve/IdeaProjects/Lesson13/src/new.json");
-                outputStream = new FileOutputStream(file);
-
-
-                // Создаем буфер - массив байтов (делают 1-3 мБ)
-                byte[] buffer = new byte[1024];// вычитывает объем и записывает в bufer
-                int bytesRead = -1;// то есть скачиваем пока инфа не закончится (кол-во записанных байтт за одно чтение)
-
-                while ((bytesRead = inputStream.read(buffer)) != -1) {// В буфер записываем инфу а в bytesRead  заносится количество записанной инфы
-
-                    outputStream.write(buffer, 0, bytesRead); // записываем (откуда, от 0, до bytesRead)
-                }
-
-                System.out.println("Данные обновлены");
-
-                ui.changeState(new LoadState());
-
-
-
+        if(matcher2.find()) {
+            if (matcher2.group(1).equals("xml")) {
+                path = "C://Users/Sve/IdeaProjects/Lesson13/src/rad.xml";
+            } else if (matcher2.group(1).equals("json")) {
+                path = "C://Users/Sve/IdeaProjects/Lesson13/src/rad.json";
             } else {
-                System.out.println("Response code");
-                ui.changeState(new FailureState());
+                System.out.println("Некорректный формат файла");
             }
-
-
-        } catch (Exception e) {
-            System.out.println("Ошибка" + e.toString());
-            ui.changeState(new FailureState());
-        } finally {
-
-            try {
-
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-                if (outputStream != null) {
-                    outputStream.close();
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            state.writeState(this);
-            state.run(this);
-
         }
+
+        return path;
     }
+
+
+
+
+
+
 }
 
