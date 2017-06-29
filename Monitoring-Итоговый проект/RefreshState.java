@@ -15,7 +15,5 @@ public class RefreshState implements State {
        ui.downloadFile("http://kiparo.ru/t/rad.xml", ui);
 
 
-
-
         }
 }
