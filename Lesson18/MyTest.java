@@ -5,14 +5,8 @@ package ReflectionAPI;
  */
 public class MyTest {
 
-    public int a = 5;
-    public String text = "text";
+    private int a = 5;
+    private String text = "text";
+    private float f = 5.6;
 
-    public  void testPublic(){
-         System.out.println("test pud");
-     }
-
-    private void testPrivate(){
-        System.out.println("test priv");
-    }
-}
+  }

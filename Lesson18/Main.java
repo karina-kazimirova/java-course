@@ -18,29 +18,44 @@ public class Main {
 
         int mod = clas.getModifiers();
 
-        if(Modifier.isPublic(mod)){
+        if (Modifier.isPublic(mod)) {
             System.out.println("класс публичный");
 
         }
-        if(Modifier.isAbstract(mod)){
+        if (Modifier.isAbstract(mod)) {
             System.out.println("класс абстрактный");
 
         }
 
 
-
-        Field[] fields = clas.getFields();
+        Field[] fields = clas.getDeclaredFields();
 
         for(Field f: fields){
-            System.out.println("переменная " + f.getName());
-            System.out.println(f.getType());
+
+            f.setAccessible(true);
+            System.out.println("field :" + f.getName());
+            System.out.println("type :" + f.getType());
+
+
             try {
                 Object o = f.get(test);
 
-                if(o instanceof String){
-                    System.out.println((String)o);
-                    f.set(test,"text1");
-                    System.out.println((String)f.get(test));
+                if (o instanceof String) {
+                    System.out.println((String) o);
+                    f.set(test, "text1");
+                    System.out.println((String) f.get(test));
+                }
+
+                if (o instanceof Integer) {
+                    System.out.println((Integer) o);
+                    f.set(test, 10);
+                    System.out.println((Integer) f.get(test));
+                }
+
+                if (o instanceof Float) {
+                    System.out.println((Float) o);
+                    f.set(test, 5.7);
+                    System.out.println((Float) f.get(test));
                 }
 
             } catch (IllegalAccessException e) {
@@ -49,7 +64,6 @@ public class Main {
 
 
         }
-
 
 
 
