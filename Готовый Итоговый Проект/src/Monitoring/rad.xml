@@ -1,0 +1,87 @@
+<root>
+	<name>Monitoring</name>
+	<location>Belarus</location>
+	
+	<city>
+		<id>0</id>
+		<name>Минск</name>
+		<value>10</value>
+		<level>в норме</level>
+		<minValue>10</minValue>
+		<dateMinValue>12.02.2005</dateMinValue>
+		<maxValue>12</maxValue>
+		<dateMaxValue>12.05.1998</dateMaxValue>
+	</city>
+	
+	<city>
+		<id>1</id>
+		<name>Брест</name>
+		<value>10</value>
+		<level>в норме</level>
+		<minValue>10</minValue>
+		<dateMinValue>12.02.2010</dateMinValue>
+		<maxValue>12</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+
+	<city>
+		<id>2</id>
+		<name>Гродно</name>
+		<value>10</value>
+		<level>в норме</level>
+		<minValue>10</minValue>
+		<dateMinValue>12.02.2011</dateMinValue>
+		<maxValue>15</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+	<city>
+		<id>3</id>
+		<name>Полоцк</name>
+		<value>10</value>
+		<level>в норме</level>
+		<minValue>8</minValue>
+		<dateMinValue>12.02.2015</dateMinValue>
+		<maxValue>14</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+	<city>
+		<id>4</id>
+		<name>Витебск</name>
+		<value>10</value>
+		<level>в норме</level>
+		<minValue>9</minValue>
+		<dateMinValue>12.02.2013</dateMinValue>
+		<maxValue>12</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+	<city>
+		<id>5</id>
+		<name>Могилёв</name>
+		<value>11</value>
+		<level>в норме</level>
+		<minValue>9</minValue>
+		<dateMinValue>12.02.2015</dateMinValue>
+		<maxValue>14</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+	<city>
+		<id>6</id>
+		<name>Бобруйск</name>
+		<value>11</value>
+		<level>средний</level>
+		<minValue>11</minValue>
+		<dateMinValue>12.02.2016</dateMinValue>
+		<maxValue>15</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+	<city>
+		<id>7</id>
+		<name>Гомель</name>
+		<value>12</value>
+		<level>средний</level>
+		<minValue>10</minValue>
+		<dateMinValue>12.02.2015</dateMinValue>
+		<maxValue>18</maxValue>
+		<dateMaxValue>12.05.1986</dateMaxValue>
+	</city>
+	</root>
